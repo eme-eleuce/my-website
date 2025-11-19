@@ -83,16 +83,24 @@ const Navbar = () => {
         </ul>
 
         <div onClick={handleNav} className='block sm:hidden z-10 items-right'>
-          {nav ? <span className='text-3xl text-white'>✕</span> : <span style={{color: `${textColor}`}} className='text-3xl'>☰</span>}
+          <button
+            className="flex items-center gap-2 text-lg"
+            style={{ color: nav ? '#ffffff' : textColor }}
+          >
+            <span className='text-3xl'>MENU</span>
+            <span className="text-3xl">
+              {nav ? '✕' : '☰'}
+            </span>
+          </button>
         </div>
 
         {/* Mobile Menu */}
         <div className={nav ? 'sm:hidden absolute top-0 bottom-0 left-0 right-0 w-full h-screen flex justify-center items-center bg-black text-center ease-in duration-300' : 'sm:hidden absolute top-0 bottom-0 left-[-100%] right-0 w-full h-screen flex justify-center items-center bg-black text-center ease-in duration-300'}>
           <ul>
-            <li onClick={() => setNav(false)} className='p-4 hover:text-gray-400 text-xl text-white'>
+            <li onClick={() => setNav(false)} className='p-4 hover:text-gray-400 text-4xl text-white'>
               <Link href='/'> Home</Link>
             </li>
-            <li className='p-4 text-xl text-white'>
+            <li className='p-4 text-4xl text-white'>
               <div 
                 className='flex items-center justify-center cursor-pointer'
                 onClick={() => setWorkDropdown(!workDropdown)}
@@ -106,7 +114,7 @@ const Navbar = () => {
                 <div className='mt-2'>
                   <Link 
                     href='/work/websites' 
-                    className='block py-2 text-base text-gray-300 hover:text-white'
+                    className='block py-2 text-2xl text-gray-300 hover:text-white'
                     onClick={() => {
                       setWorkDropdown(false);
                       setNav(false);
@@ -116,7 +124,7 @@ const Navbar = () => {
                   </Link>
                   <Link 
                     href='/work/photography' 
-                    className='block py-2 text-base text-gray-300 hover:text-white'
+                    className='block py-2 text-2xl text-gray-300 hover:text-white'
                     onClick={() => {
                       setWorkDropdown(false);
                       setNav(false);
@@ -127,7 +135,7 @@ const Navbar = () => {
                 </div>
               )}
             </li>
-            <li onClick={() => setNav(false)} className='p-4 hover:text-gray-400 text-xl text-white'>
+            <li onClick={() => setNav(false)} className='p-4 hover:text-gray-400 text-4xl text-white'>
               <Link href='/contact'> Contact</Link>
             </li>
           </ul>

@@ -8,7 +8,7 @@ export default function Home() {
     'λουίς εμέ',
     'louis eme',
     'луис эмм',
-    'ルイス・エム',
+    'ルイス エム',
   ];
 
   const [currentNameIndex, setCurrentNameIndex] = useState(0);
@@ -49,7 +49,7 @@ export default function Home() {
   return (
     <div className="flex items-center justify-center h-screen bg-fixed custom-bg min-h-screen">
       <div className="text-center">
-        <h1 className="text-5xl  text-white">
+        <h1 className="text-6xl  text-white">
           {displayText}
           <span className="animate-pulse">|</span>
         </h1>
