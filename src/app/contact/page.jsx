@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { FaInstagram, FaGithub } from 'react-icons/fa';
+import { FaInstagram, FaGithub, FaWhatsapp } from 'react-icons/fa';
 import luisPhoto from '../../../public/photos/luis.jpg';
 
 export default function ContactPage() {
@@ -46,14 +46,24 @@ export default function ContactPage() {
             >
               luis.iarmolen@gmail.com
             </a>
-            <a
-              href="https://github.com/eme-eleuce"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-black hover:text-gray-600 transition-colors duration-300"
-            >
-              <FaGithub size={48} />
-            </a>
+            <div className="flex gap-6">
+              <a
+                href="https://github.com/eme-eleuce"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-black hover:text-gray-600 transition-colors duration-300"
+              >
+                <FaGithub size={48} />
+              </a>
+              <a
+                href="https://wa.me/5930968572318"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-green-500 hover:text-green-600 transition-colors duration-300"
+              >
+                <FaWhatsapp size={48} />
+              </a>
+            </div>
           </div>
         </div>
       </div>
