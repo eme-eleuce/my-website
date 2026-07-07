@@ -6,115 +6,120 @@ import { usePathname } from 'next/navigation';
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
-  const [color, setColor] = useState('transparent');
+  const [scrolled, setScrolled] = useState(false);
   const [textColor, setTextColor] = useState('white');
   const [workDropdown, setWorkDropdown] = useState(false);
   const pathname = usePathname();
-  
+
   const handleNav = () => {
     setNav(!nav);
   };
 
-  // Check if we're on home page
   const isHomePage = pathname === '/';
 
   useEffect(() => {
     const changeColor = () => {
-      if (window.scrollY >= 90) {
-        setColor('#ffffff');
-        setTextColor('#000000');
-      } else {
-        setColor('transparent');
-        // If not on home page, keep text black even when transparent
-        setTextColor(isHomePage ? '#ffffff' : '#000000');
-      }
+      const isScrolled = window.scrollY >= 90;
+      setScrolled(isScrolled);
+      setTextColor(isScrolled ? '#000000' : isHomePage ? '#ffffff' : '#000000');
     };
-    
-    // Set initial color based on page
+
     changeColor();
-    
     window.addEventListener('scroll', changeColor);
     return () => window.removeEventListener('scroll', changeColor);
   }, [isHomePage]);
 
+  const navClassName = scrolled
+    ? 'backdrop-blur-md bg-white/85 shadow-sm'
+    : 'bg-transparent';
+
   return (
-    <div style={{backgroundColor: `${color}`}} className='fixed top-0 left-0 w-full z-10 ease duration-500'>
-      <div className='max-w-[1240px] m-auto flex justify-center items-center p-4 py-2 text-[#E9E9EB]'>
-        
-        <ul style={{color: `${textColor}`}} className='hidden sm:flex gap-12'>
-          <li className='p-3 text-3xl'>
-            <Link href='/'> home</Link>
+    <div className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${navClassName}`}>
+      <div className='max-w-[1240px] m-auto flex justify-center items-center p-4 py-3 text-[#E9E9EB] relative z-60'>
+
+        <ul style={{ color: textColor }} className='hidden sm:flex gap-10 md:gap-14'>
+          <li className='p-2 text-2xl md:text-3xl'>
+            <Link href='/' className='nav-link'>home</Link>
           </li>
-          <li className='p-3 text-3xl relative flex items-center'>
-            <span 
+          <li className='p-2 text-2xl md:text-3xl relative flex items-center'>
+            <span
               onClick={() => setWorkDropdown(!workDropdown)}
-              className='cursor-pointer flex items-center'
+              className='nav-link cursor-pointer flex items-center'
             >
               work
-              <span className='ml-2 text-sm'>
+              <span className='ml-2 text-xs tracking-widest'>
                 {workDropdown ? '▲' : '▼'}
               </span>
             </span>
             {workDropdown && (
-              <div 
-                className='absolute top-full left-0 mt-2 bg-white shadow-lg rounded-md py-2 min-w-[150px] z-50'
-                style={{backgroundColor: '#ffffff'}}
-              >
-                <Link 
-                  href='/work/websites' 
-                  className='block px-4 py-2 text-lg text-black hover:bg-gray-100'
+              <div className='absolute top-full left-0 mt-2 bg-white/95 backdrop-blur-sm shadow-lg rounded-md py-2 min-w-[150px] z-[60]'>
+                <Link
+                  href='/work/websites'
+                  className='block px-4 py-2 text-base font-mono tracking-wider text-black hover:bg-gray-100'
                   onClick={() => setWorkDropdown(false)}
                 >
                   websites
                 </Link>
-                <Link 
-                  href='/work/photography' 
-                  className='block px-4 py-2 text-lg text-black hover:bg-gray-100'
+                <Link
+                  href='/work/photography'
+                  className='block px-4 py-2 text-base font-mono tracking-wider text-black hover:bg-gray-100'
                   onClick={() => setWorkDropdown(false)}
                 >
                   photography
                 </Link>
+                <Link
+                  href='/work/posters'
+                  className='block px-4 py-2 text-base font-mono tracking-wider text-black hover:bg-gray-100'
+                  onClick={() => setWorkDropdown(false)}
+                >
+                  posters
+                </Link>
               </div>
             )}
           </li>
-          <li className='p-3 text-3xl'>
-            <Link href='/contact'> contact</Link>
+          <li className='p-2 text-2xl md:text-3xl'>
+            <Link href='/contact' className='nav-link'>contact</Link>
           </li>
         </ul>
 
-        <div onClick={handleNav} className='block sm:hidden z-10 items-right'>
+        <div onClick={handleNav} className='block sm:hidden'>
           <button
-            className="flex items-center gap-2 text-lg"
+            type="button"
+            className="flex items-center gap-2 text-lg font-mono tracking-widest"
             style={{ color: nav ? '#ffffff' : textColor }}
           >
-            <span className='text-3xl'>MENU</span>
-            <span className="text-3xl">
+            <span className='text-2xl'>menu</span>
+            <span className="text-2xl">
               {nav ? '✕' : '☰'}
             </span>
           </button>
         </div>
+      </div>
 
-        {/* Mobile Menu */}
-        <div className={nav ? 'sm:hidden absolute top-0 bottom-0 left-0 right-0 w-full h-screen flex justify-center items-center bg-black text-center ease-in duration-300' : 'sm:hidden absolute top-0 bottom-0 left-[-100%] right-0 w-full h-screen flex justify-center items-center bg-black text-center ease-in duration-300'}>
+      <div
+        className={`sm:hidden fixed inset-0 z-[55] flex justify-center items-center bg-black/95 backdrop-blur-md text-center transition-transform duration-300 ${
+          nav ? 'translate-x-0' : 'translate-x-full pointer-events-none'
+        }`}
+      >
           <ul>
             <li onClick={() => setNav(false)} className='p-4 hover:text-gray-400 text-4xl text-white'>
-              <Link href='/'> Home</Link>
+              <Link href='/'>home</Link>
             </li>
             <li className='p-4 text-4xl text-white'>
-              <div 
+              <div
                 className='flex items-center justify-center cursor-pointer'
                 onClick={() => setWorkDropdown(!workDropdown)}
               >
-                <span> Work</span>
+                <span>work</span>
                 <span className='ml-2 text-sm'>
                   {workDropdown ? '▲' : '▼'}
                 </span>
               </div>
               {workDropdown && (
-                <div className='mt-2'>
-                  <Link 
-                    href='/work/websites' 
-                    className='block py-2 text-2xl text-gray-300 hover:text-white'
+                <div className='mt-2 font-mono'>
+                  <Link
+                    href='/work/websites'
+                    className='block py-2 text-2xl text-gray-300 hover:text-white tracking-wider'
                     onClick={() => {
                       setWorkDropdown(false);
                       setNav(false);
@@ -122,9 +127,9 @@ const Navbar = () => {
                   >
                     websites
                   </Link>
-                  <Link 
-                    href='/work/photography' 
-                    className='block py-2 text-2xl text-gray-300 hover:text-white'
+                  <Link
+                    href='/work/photography'
+                    className='block py-2 text-2xl text-gray-300 hover:text-white tracking-wider'
                     onClick={() => {
                       setWorkDropdown(false);
                       setNav(false);
@@ -132,14 +137,23 @@ const Navbar = () => {
                   >
                     photography
                   </Link>
+                  <Link
+                    href='/work/posters'
+                    className='block py-2 text-2xl text-gray-300 hover:text-white tracking-wider'
+                    onClick={() => {
+                      setWorkDropdown(false);
+                      setNav(false);
+                    }}
+                  >
+                    posters
+                  </Link>
                 </div>
               )}
             </li>
             <li onClick={() => setNav(false)} className='p-4 hover:text-gray-400 text-4xl text-white'>
-              <Link href='/contact'> Contact</Link>
+              <Link href='/contact'>contact</Link>
             </li>
           </ul>
-        </div>
       </div>
     </div>
   );
