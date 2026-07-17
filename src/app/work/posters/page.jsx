@@ -7,6 +7,7 @@ const posters = [
     alt: 'El Misil Cubano — Chapman poster',
     width: 2400,
     height: 1350,
+    displayWidth: 560,
   },
   {
     id: 2,
@@ -14,6 +15,15 @@ const posters = [
     alt: 'Eduardo Rodríguez — WBC 2026 poster',
     width: 1500,
     height: 1000,
+    displayWidth: 500,
+  },
+  {
+    id: 3,
+    src: '/posters/arraez.jpg',
+    alt: 'Luis Arráez poster',
+    width: 1800,
+    height: 1013,
+    displayWidth: 530,
   },
 ];
 
@@ -29,14 +39,15 @@ export default function PostersPage() {
           {posters.map((poster) => (
             <div
               key={poster.id}
-              className="overflow-hidden rounded-lg shadow-lg group max-w-full"
+              className="overflow-hidden rounded-lg shadow-lg group w-full self-center"
+              style={{ maxWidth: `${poster.displayWidth}px` }}
             >
               <Image
                 src={poster.src}
                 alt={poster.alt}
                 width={poster.width}
                 height={poster.height}
-                className="h-auto w-auto max-w-full block transition-transform duration-500 group-hover:scale-105"
+                className="h-auto w-full block transition-transform duration-500 group-hover:scale-105"
               />
             </div>
           ))}

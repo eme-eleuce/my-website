@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
 
 const names = [
   'luis eme',
@@ -86,17 +85,6 @@ export default function Home() {
             creating stuff
           </p>
         </div>
-
-        <Link
-          href="/work/websites"
-          className={`absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 group hero-enter hero-enter-delay-3 ${mounted ? 'hero-enter-active' : ''}`}
-          aria-label="Explore work"
-        >
-          <span className="font-mono text-[10px] tracking-[0.45em] uppercase text-white/35 group-hover:text-white/60 transition-colors duration-300">
-            explore
-          </span>
-          <div className="scroll-line" />
-        </Link>
       </div>
     </div>
   );
