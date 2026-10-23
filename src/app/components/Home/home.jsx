@@ -54,6 +54,8 @@ export default function Home() {
     <div className="hero relative flex min-h-screen h-screen overflow-hidden">
       <div className="hero-bg" aria-hidden="true">
         <div className="hero-mesh" />
+        <div className="grain-overlay" />
+        <div className="grain-overlay grain-overlay-fine" />
       </div>
 
       <div
@@ -66,7 +68,7 @@ export default function Home() {
         style={{ transform: `translate(${-px * 0.4}px, ${-py * 0.4}px)` }}
         aria-hidden="true"
       />
-      <div className="grain-overlay" aria-hidden="true" />
+      <div className="grain-overlay grain-overlay-top" aria-hidden="true" />
 
       <div className="relative z-10 flex flex-col items-center justify-center w-full min-h-screen p-8 md:p-12 lg:p-16 text-center">
         <div className="max-w-4xl">
