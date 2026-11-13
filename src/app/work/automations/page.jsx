@@ -3,7 +3,8 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { cases, ui } from './cases';
+import { FaWhatsapp } from 'react-icons/fa';
+import { WHATSAPP_NUMBER, cases, ui } from './cases';
 
 function LanguageSwitch({ language, setLanguage }) {
   return (
@@ -36,6 +37,7 @@ export default function AutomationsPage() {
   const [language, setLanguage] = useState('es');
   const [mounted, setMounted] = useState(false);
   const text = ui[language];
+  const whatsappHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text.whatsappMessage)}`;
 
   useEffect(() => {
     requestAnimationFrame(() => setMounted(true));
@@ -91,6 +93,27 @@ export default function AutomationsPage() {
               </Link>
             );
           })}
+        </div>
+
+        <div
+          className={`mt-16 md:mt-20 max-w-2xl mx-auto text-center border-t border-gray-200 pt-12 hero-enter ${mounted ? 'hero-enter-active' : ''}`}
+          style={{ transitionDelay: `${0.2 + cases.length * 0.12}s` }}
+        >
+          <h2 className="text-2xl sm:text-3xl font-bold text-black">
+            {text.moreInfoTitle}
+          </h2>
+          <p className="mt-3 text-gray-600 text-base sm:text-lg leading-relaxed">
+            {text.moreInfoText}
+          </p>
+          <a
+            href={whatsappHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-6 inline-flex items-center justify-center gap-2 rounded-lg bg-[#25D366] px-6 py-3 text-white font-semibold hover:bg-[#1ebe57] transition-colors duration-300"
+          >
+            <FaWhatsapp size={22} aria-hidden="true" />
+            {text.moreInfoCta}
+          </a>
         </div>
       </div>
     </div>

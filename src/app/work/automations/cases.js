@@ -1,6 +1,9 @@
 // Casos en public/automatizaciones/<carpeta>/
 // renombrador/ → entrega-de-catalogo
 // asistente-excel/ → anotacion-en-excel (cover + capturas del panel)
+// panel-d/ → panel-procesos-documentos (cover desktop + movil.png en marco de teléfono)
+
+export const WHATSAPP_NUMBER = '5930968572318';
 
 export const ui = {
   es: {
@@ -8,12 +11,24 @@ export const ui = {
     seeCase: 'Ver caso →',
     viewFull: 'Ver completo',
     close: 'Cerrar',
+    moreInfoTitle: '¿Quieres algo parecido?',
+    moreInfoText:
+      'Cuéntame qué proceso quieres automatizar y te oriento sobre opciones y alcance.',
+    moreInfoCta: 'Quiero más información',
+    whatsappMessage:
+      'Hola! Vi la sección de Automatizaciones y quisiera más información.',
   },
   en: {
     title: 'Automations',
     seeCase: 'See case →',
     viewFull: 'View full',
     close: 'Close',
+    moreInfoTitle: 'Want something like this?',
+    moreInfoText:
+      'Tell me which process you want to automate and I will help with options and scope.',
+    moreInfoCta: 'I want more information',
+    whatsappMessage:
+      'Hi! I saw the Automations section and I would like more information.',
   },
 };
 
@@ -210,6 +225,103 @@ export const cases = [
           detail: 'Photo range, skips, and edit tags',
         },
       },
+    },
+  },
+  {
+    slug: 'panel-procesos-documentos',
+    cover: '/automatizaciones/panel-d/cover.png',
+    phone: {
+      src: '/automatizaciones/panel-d/movil.png',
+      id: 'movil',
+    },
+    imageCaptions: false,
+    photos: [
+      { src: '/automatizaciones/panel-d/documentos.png', id: 'documentos' },
+      { src: '/automatizaciones/panel-d/login.png', id: 'login' },
+    ],
+    es: {
+      client: 'Expedientes multiempresa',
+      business: 'Procesos, documentos y acceso',
+      caseLabel: 'El caso',
+      caseText:
+        'Había que llevar procesos y documentos de varias empresas a la vez: contratos, pólizas, facturas, actas y certificados, cada uno con su estado. El seguimiento se repartía entre carpetas, hojas y mensajes. Saber qué faltaba en un expediente, o pasar de una empresa a otra sin perder el hilo, costaba tiempo y dejaba huecos.',
+      solutionLabel: 'La solución',
+      solutionText: [
+        'Un solo panel web (y móvil) para varias empresas',
+        'Vista general con totales, estados, búsqueda y filtros',
+        'Detalle de cada proceso con cambio de estado',
+        'Carpetas de documentos por tipo',
+        'Vista previa de PDF, Word o Excel en el panel',
+        'Subida de varios archivos a la vez',
+        'Compartir directo por email, WhatsApp u otros canales',
+        'Login seguro con expiración de sesión por tiempo',
+        'Cambio de empresa sin salir del flujo',
+      ],
+      gainsLabel: 'Mejoras',
+      gainsText: [
+        'Una herramienta para varias empresas, no carpetas sueltas',
+        'Estado y documentos visibles de un vistazo, en escritorio y móvil',
+        'Revisar archivos sin tener que descargarlos',
+        'Más control sobre lo cerrado, en curso o incompleto',
+        'Acceso acotado por sesión',
+      ],
+      steps: [
+        {
+          name: 'Vista general',
+          detail: 'Totales, montos, estados y listado de procesos por empresa',
+        },
+        {
+          name: 'Documentos',
+          detail: 'Vista previa de PDF, Word o Excel sin salir del panel',
+        },
+        {
+          name: 'Acceso',
+          detail: 'Login seguro con expiración de sesión por tiempo',
+        },
+      ],
+      screens: {},
+    },
+    en: {
+      client: 'Multi-company case files',
+      business: 'Processes, documents & access',
+      caseLabel: 'The case',
+      caseText:
+        'Processes and documents for several companies had to be tracked at once: contracts, policies, invoices, minutes, and certificates, each with its own status. Follow-up lived across folders, sheets, and messages. Knowing what was missing in a file, or switching companies without losing the thread, took time and left gaps.',
+      solutionLabel: 'The solution',
+      solutionText: [
+        'One web panel (and mobile) for several companies',
+        'Overview with totals, statuses, search, and filters',
+        'Process detail with status changes',
+        'Document folders by type',
+        'In-panel preview of PDF, Word, or Excel',
+        'Upload several files at once',
+        'Share directly by email, WhatsApp, or other channels',
+        'Secure login with timed session expiration',
+        'Switch companies without leaving the workflow',
+      ],
+      gainsLabel: 'Improvements',
+      gainsText: [
+        'One tool for several companies, not scattered folders',
+        'Status and documents visible at a glance, on desktop and mobile',
+        'Review files without downloading them',
+        'More control over what is closed, in progress, or incomplete',
+        'Access bounded by session',
+      ],
+      steps: [
+        {
+          name: 'Overview',
+          detail: 'Totals, amounts, statuses, and process list per company',
+        },
+        {
+          name: 'Documents',
+          detail: 'In-panel preview of PDF, Word, or Excel',
+        },
+        {
+          name: 'Access',
+          detail: 'Secure login with timed session expiration',
+        },
+      ],
+      screens: {},
     },
   },
 ];
