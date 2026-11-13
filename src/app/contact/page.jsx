@@ -4,9 +4,11 @@ import luisPhoto from '../../../public/photos/luis.jpg';
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-white py-16 px-6 mt-5">
+    <div className="min-h-screen bg-white py-14 sm:py-16 px-4 sm:px-6 mt-5">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-6xl font-bold text-black text-center mb-10">Contact</h1>
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-black text-center mb-10 px-2 break-words">
+          Contact
+        </h1>
 
         <div className="flex flex-col items-center">
           <div className="relative w-100 h-100 overflow-hidden mb-5">

@@ -187,17 +187,15 @@ export default function WebsitesPage() {
   const [language, setLanguage] = useState('en');
 
   return (
-    <div className="min-h-screen bg-white py-20 px-6 mt-5">
+    <div className="min-h-screen bg-white py-14 sm:py-20 px-4 sm:px-6 mt-5">
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
-        <div className="text-center mt-10 mb-12">
-          
-          
+        <div className="text-center mt-6 sm:mt-10 mb-10 sm:mb-12">
           {/* Navigation Bar */}
-          <div className="flex justify-center gap-4 mb-15">
+          <div className="flex justify-center gap-2 sm:gap-4 mb-10 sm:mb-15">
             <button
               onClick={() => setActiveTab('plans')}
-              className={`px-8 py-3 text-xl font-semibold rounded-lg transition-all duration-300 ${
+              className={`px-5 sm:px-8 py-2.5 sm:py-3 text-base sm:text-xl font-semibold rounded-lg transition-all duration-300 ${
                 activeTab === 'plans'
                   ? 'bg-black text-white shadow-lg'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -207,7 +205,7 @@ export default function WebsitesPage() {
             </button>
             <button
               onClick={() => setActiveTab('websites')}
-              className={`px-8 py-3 text-xl font-semibold rounded-lg transition-all duration-300 ${
+              className={`px-5 sm:px-8 py-2.5 sm:py-3 text-base sm:text-xl font-semibold rounded-lg transition-all duration-300 ${
                 activeTab === 'websites'
                   ? 'bg-black text-white shadow-lg'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -247,7 +245,7 @@ export default function WebsitesPage() {
         {/* Websites Section */}
         {activeTab === 'websites' && (
           <>
-            <h2 className="text-3xl md:text-5xl font-bold text-center text-black mb-12">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center text-black mb-10 sm:mb-12 px-2 break-words">
               Active Websites
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -311,7 +309,7 @@ export default function WebsitesPage() {
                 )}
                 
                 <div className="text-center mb-6">
-                  <h3 className="text-4xl md:text-3xl font-bold text-black mb-3">
+                  <h3 className="text-2xl sm:text-3xl font-bold text-black mb-3 break-words">
                     {plan.name}
                   </h3>
                   <p className="text-3xl md:text-2xl font-bold bg-gradient-to-r from-purple-700 to-pink-700 bg-clip-text text-transparent mb-4">
@@ -368,7 +366,7 @@ export default function WebsitesPage() {
         {activeTab === 'plans' && (
           <div className="mt-16 max-w-4xl mx-auto">
             <div className="bg-gradient-to-r from-purple-50 to-orange-200 rounded-2xl p-8 shadow-lg">
-              <h2 className="text-3xl font-bold text-center text-black mb-8">
+              <h2 className="text-2xl sm:text-3xl font-bold text-center text-black mb-8 px-2 break-words">
                 {translations[language].addOnsTitle}
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

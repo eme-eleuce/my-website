@@ -44,12 +44,14 @@ export default function AutomationsPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white py-20 px-6 mt-5">
+    <div className="min-h-screen bg-white py-14 sm:py-20 px-4 sm:px-6 mt-5">
       <div className="max-w-7xl mx-auto">
         <div
-          className={`text-center mb-16 hero-enter ${mounted ? 'hero-enter-active' : ''}`}
+          className={`text-center mb-12 sm:mb-16 hero-enter ${mounted ? 'hero-enter-active' : ''}`}
         >
-          <h1 className="text-6xl font-bold text-black">{text.title}</h1>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-black px-2 break-words">
+            {text.title}
+          </h1>
           <LanguageSwitch language={language} setLanguage={setLanguage} />
         </div>
 
@@ -82,7 +84,9 @@ export default function AutomationsPage() {
                 </div>
 
                 <div className="bg-white p-6">
-                  <h2 className="text-2xl font-bold text-black mb-2">{card.client}</h2>
+                  <h2 className="text-xl sm:text-2xl font-bold text-black mb-2 break-words">
+                    {card.client}
+                  </h2>
                   <p className="text-lg mb-4 font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
                     {card.business}
                   </p>

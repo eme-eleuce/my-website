@@ -29,10 +29,12 @@ const posters = [
 
 export default function PostersPage() {
   return (
-    <div className="min-h-screen bg-white py-20 px-6 mt-5">
+    <div className="min-h-screen bg-white py-14 sm:py-20 px-4 sm:px-6 mt-5">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h1 className="text-6xl font-bold text-black">Posters</h1>
+        <div className="text-center mb-12 sm:mb-16">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-black px-2 break-words">
+            Posters
+          </h1>
         </div>
 
         <div className="flex flex-wrap justify-center gap-8">
